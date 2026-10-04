@@ -1,0 +1,38 @@
+# Default training configuration.
+# Override per run with `python scripts/run_training.py --config path/to.yaml`.
+
+model_name: district_daily_rainfall
+target_column: target_rainfall_mm
+horizon_days: 1
+
+# Reproducibility: the same dataset + config + seed must give the same artifact.
+random_seed: 42
+
+# Heavy-rain event definition used for categorical verification scores.
+event_threshold_mm: 15.0
+
+# Feature engineering and selection
+max_features: 14
+
+# Chronological split fractions (test is the most recent slice).
+valid_fraction: 0.2
+test_fraction: 0.2
+
+candidate_names:
+  - ridge
+  - hist_gradient_boosting
+  - random_forest
+  - gradient_boosting
+
+# 10th/90th percentile models that bound the served forecast interval.
+quantile_alphas: [0.1, 0.9]
+fit_interval_models: true
+
+# Write the model_versions row so the API can serve this candidate.
+register_in_database: true
+
+# Promotion stays manual by default; a candidate never replaces the active
+# model unless the promotion policy proves it is better.
+promote: false
+
+notes: Baseline rainfall forecaster for district-level 24h accumulation.

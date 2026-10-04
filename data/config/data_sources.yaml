@@ -1,0 +1,73 @@
+# Configuration for authoritative Indian government datasets
+# Enforces storage limits (preferred <= 1 GB, maximum 5 GB)
+
+dataset:
+  max_raw_size_gb: 5.0
+  preferred_raw_size_gb: 1.0
+
+study_region:
+  name: "Godavari Basin & Maharashtra"
+  state: "Maharashtra"
+  river_basin: "Godavari"
+  description: "Godavari river basin and Maharashtra districts prone to severe monsoon precipitation and riverine flooding."
+
+sources:
+  cwc_rainfall:
+    enabled: true
+    name: "CWC Telemetry Hourly Rainfall (Maharashtra)"
+    publisher: "Central Water Commission, Ministry of Jal Shakti, Government of India"
+    portal: "National Water Data Portal (NWDP / NWIC)"
+    official_url: "https://nwdp.nwic.gov.in/dataset/rainfall-cwc-telemetry-hourly"
+    download_url: "https://nwdp.nwic.gov.in/dataset/792f0818-bedf-42ab-a119-dc7002ceb312/resource/11909652-6802-4e82-8199-e323a922e64b/download/rainfall_tel_hr_cwc_mh_2021_2025.csv"
+    filename: "rainfall_tel_hr_cwc_mh_2021_2025.csv"
+    time_range: "2021-2025"
+    temporal_resolution: "Hourly"
+    variable: "rainfall_mm"
+
+  cwc_water_level:
+    enabled: true
+    name: "CWC Telemetry Hourly River Water Level (Godavari Basin)"
+    publisher: "Central Water Commission, Ministry of Jal Shakti, Government of India"
+    portal: "National Water Data Portal (NWDP / NWIC)"
+    official_url: "https://nwdp.nwic.gov.in/dataset/river-water-level-telemetry-hourly-central-water-commission-cwc"
+    download_url: "https://nwdp.nwic.gov.in/dataset/68600163-c5a0-4327-aa1a-fa7157b86cce/resource/4d139325-8371-422f-acef-d34ccec4300e/download/rwl_tel_hr_cwc_006_2021_2025.csv"
+    filename: "rwl_tel_hr_cwc_006_2021_2025.csv"
+    time_range: "2021-2025"
+    temporal_resolution: "Hourly"
+    variable: "river_water_level_m"
+
+  cwc_discharge:
+    enabled: true
+    name: "CWC Telemetry Hourly River Water Discharge (Odisha Basin Reference)"
+    publisher: "Central Water Commission, Ministry of Jal Shakti, Government of India"
+    portal: "National Water Data Portal (NWDP / NWIC)"
+    official_url: "https://nwdp.nwic.gov.in/dataset/river-discharge-telemetry-hourly-central-water-commission-cwc"
+    download_url: "https://nwdp.nwic.gov.in/dataset/aee818d7-2cb6-4790-aa3c-126a72621170/resource/b3dbc4d2-08c8-429d-920a-4171305e2426/download/river_discharge_tele_hr_cwc_od_1970_2025.csv"
+    filename: "river_discharge_tele_hr_cwc_od_1970_2025.csv"
+    time_range: "1970-2025"
+    temporal_resolution: "Hourly"
+    variable: "river_discharge_m3_sec"
+
+  cwc_temperature:
+    enabled: true
+    name: "CWC Telemetry Hourly Temperature (Maharashtra)"
+    publisher: "Central Water Commission, Ministry of Jal Shakti, Government of India"
+    portal: "National Water Data Portal (NWDP / NWIC)"
+    official_url: "https://nwdp.nwic.gov.in/dataset/temperature-telemetry-hourly-central-water-commission-cwc"
+    download_url: "https://nwdp.nwic.gov.in/dataset/a0cc2de2-9f7b-478c-8d2d-d58af2ed8bf6/resource/c7ddda5c-7fb6-4bb7-8dd8-8b2757cebacc/download/temprature_tel_hr_cwc_mh_2021_2025.csv"
+    filename: "temprature_tel_hr_cwc_mh_2021_2025.csv"
+    time_range: "2021-2025"
+    temporal_resolution: "Hourly"
+    variable: "temperature_c"
+
+  cpcb_water_quality:
+    enabled: true
+    name: "CPCB Surface Water Quality Chemical Parameters (Maharashtra)"
+    publisher: "Central Pollution Control Board, Ministry of Environment, Forest & Climate Change, Government of India"
+    portal: "National Water Data Portal (NWDP / NWIC)"
+    official_url: "https://nwdp.nwic.gov.in/dataset/surface-water-quality-manual-chemical-parameters-cpcb"
+    download_url: "https://nwdp.nwic.gov.in/dataset/d54d7702-d21f-408f-8dc0-2665bde47201/resource/4593ba3e-3097-4f26-800c-b25c692adaef/download/swq_chemical_parameter_manual_cpcb_mh_2021_2025.csv"
+    filename: "swq_chemical_parameter_manual_cpcb_mh_2021_2025.csv"
+    time_range: "2021-2025"
+    temporal_resolution: "Manual / Monthly"
+    variable: "chemical_parameters"

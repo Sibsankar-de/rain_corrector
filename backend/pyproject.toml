@@ -1,0 +1,42 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "-q --strict-markers"
+filterwarnings = [
+    "ignore::DeprecationWarning:passlib.*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = [
+    "B008",   # FastAPI Depends() in defaults is the documented pattern
+    "RUF001", # en dash / arrow glyphs in docstrings
+    "SIM108", # ternary rewrite is not always clearer
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+warn_unused_ignores = false
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = false
+exclude = "(.venv|migrations)"
+
+[[tool.mypy.overrides]]
+module = ["pandas.*", "sklearn.*", "joblib.*", "alembic.*", "structlog.*"]
+ignore_missing_imports = true

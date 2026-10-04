@@ -1,0 +1,177 @@
+{
+  "metadata_version": "1.0.0",
+  "generated_at": "2026-09-29T20:50:02.754676+00:00",
+  "study_region": {
+    "name": "Godavari & Western River Basins, Maharashtra",
+    "states": [
+      "Maharashtra"
+    ],
+    "primary_districts": [
+      "Mumbai Suburban",
+      "Pune",
+      "Nagpur",
+      "Nashik",
+      "Jalgaon",
+      "Kolhapur",
+      "Nanded",
+      "Chandrapur",
+      "Amravati",
+      "Parbhani",
+      "Dhule",
+      "Bhandara",
+      "Wardha",
+      "Aurangabad",
+      "Hingoli",
+      "Ahmadnagar",
+      "Satara",
+      "Yavatmal",
+      "Nandurbar",
+      "Solapur",
+      "Thane",
+      "Akola",
+      "Buldana",
+      "Sangli",
+      "Gadchiroli"
+    ],
+    "total_districts": 25
+  },
+  "datasets": [
+    {
+      "name": "CWC Maharashtra Telemetry Hourly Rainfall",
+      "publisher": "Central Water Commission (CWC), Ministry of Jal Shakti",
+      "official_portal": "National Water Data Portal (NWDP / NWIC)",
+      "source_url": "https://nwdp.nwic.gov.in/dataset/rainfall-cwc-telemetry-hourly",
+      "coverage": "Maharashtra State (22 districts, 58 telemetry stations)",
+      "start_date": "2021-01-01",
+      "end_date": "2025-12-29",
+      "variables": [
+        "Telemetry Hourly Rainfall (mm)"
+      ],
+      "raw_file": "rainfall_tel_hr_cwc_mh_2021_2025.csv",
+      "raw_size_bytes": 36719484,
+      "processed_file": "observations.csv",
+      "processed_size_bytes": 619725,
+      "metrics": {
+        "raw_rows": 266707,
+        "processed_rows": 11731,
+        "districts_count": 22,
+        "stations_count": 58,
+        "date_min": "2021-01-01",
+        "date_max": "2025-12-29",
+        "mean_daily_rainfall_mm": 9.28,
+        "max_daily_rainfall_mm": 892.5,
+        "heavy_rain_days_pct": 12.22
+      }
+    },
+    {
+      "name": "CWC Godavari River Basin Telemetry Hourly Water Level",
+      "publisher": "Central Water Commission (CWC), Ministry of Jal Shakti",
+      "official_portal": "National Water Data Portal (NWDP / NWIC)",
+      "source_url": "https://nwdp.nwic.gov.in/dataset/river-water-level-telemetry-hourly-central-water-commission-cwc",
+      "coverage": "Godavari River Basin (Maharashtra & neighbouring states, 66 stations)",
+      "start_date": "2021-01-01",
+      "end_date": "2025-12-31",
+      "variables": [
+        "River Water Level Telemetry Hourly (meter)"
+      ],
+      "raw_file": "rwl_tel_hr_cwc_006_2021_2025.csv",
+      "raw_size_bytes": 185715692,
+      "processed_file": "flood_features.parquet",
+      "processed_size_bytes": 289623,
+      "metrics": {
+        "raw_rows": 1055737,
+        "valid_rows": 1039213,
+        "missing_rate_pct": 1.57,
+        "stations_count": 66,
+        "mean_water_level_m": 327.91
+      }
+    },
+    {
+      "name": "CWC Telemetry Hourly River Water Discharge",
+      "publisher": "Central Water Commission (CWC), Ministry of Jal Shakti",
+      "official_portal": "National Water Data Portal (NWDP / NWIC)",
+      "source_url": "https://nwdp.nwic.gov.in/dataset/river-discharge-telemetry-hourly-central-water-commission-cwc",
+      "coverage": "Baitarani Basin / Eastern Peninsular Reference Station (Champua)",
+      "start_date": "2022-09-01",
+      "end_date": "2025-12-31",
+      "variables": [
+        "Telemetry Hourly River Water Discharge (m3/sec)"
+      ],
+      "raw_file": "river_discharge_tele_hr_cwc_od_1970_2025.csv",
+      "raw_size_bytes": 4628783,
+      "processed_file": "flood_features.parquet",
+      "processed_size_bytes": 289623,
+      "metrics": {
+        "raw_rows": 43537,
+        "valid_rows": 15734,
+        "stations": [
+          "Champua_1"
+        ],
+        "mean_discharge_m3s": 10.45
+      }
+    },
+    {
+      "name": "CWC Maharashtra Hourly Air Temperature Telemetry",
+      "publisher": "Central Water Commission (CWC), Ministry of Jal Shakti",
+      "official_portal": "National Water Data Portal (NWDP / NWIC)",
+      "source_url": "https://nwdp.nwic.gov.in/dataset/rainfall-cwc-telemetry-hourly",
+      "coverage": "Tapi River Basin (Bhusawal, Jalgaon, Maharashtra)",
+      "start_date": "2021-01-01",
+      "end_date": "2025-12-31",
+      "variables": [
+        "Air Temperature Telemetry Hourly (\u00baC)"
+      ],
+      "raw_file": "temprature_tel_hr_cwc_mh_2021_2025.csv",
+      "raw_size_bytes": 635029,
+      "processed_file": "flood_features.parquet",
+      "processed_size_bytes": 289623,
+      "metrics": {
+        "raw_rows": 5123,
+        "valid_rows": 4096,
+        "mean_temp_c": 17.33
+      }
+    },
+    {
+      "name": "CPCB Surface Water Chemical Parameter Monitoring",
+      "publisher": "Central Pollution Control Board (CPCB), Ministry of Environment, Forest and Climate Change",
+      "official_portal": "National Water Data Portal (NWDP / NWIC)",
+      "source_url": "https://nwdp.nwic.gov.in/dataset/surface-water-quality-chemical-parameter-manual-cpcb",
+      "coverage": "Maharashtra State (31 districts, 225 monitoring stations)",
+      "start_date": "2021-01-01",
+      "end_date": "2025-12-31",
+      "variables": [
+        "Dissolved oxygen",
+        "pH",
+        "TDS",
+        "Nitrate N",
+        "Total Hardness",
+        "Alkalinity"
+      ],
+      "raw_file": "swq_chemical_parameter_manual_cpcb_mh_2021_2025.csv",
+      "raw_size_bytes": 498011,
+      "processed_file": "air_quality_features.parquet",
+      "processed_size_bytes": 43244,
+      "metrics": {
+        "raw_rows": 1942,
+        "normalised_rows": 4022,
+        "monitoring_stations": 225,
+        "districts": 31,
+        "parameters": [
+          "Dissolved oxygen (mg/L)",
+          "Potential of Hydrogen (pH)",
+          "Total Dissolved Solids (mg/L)",
+          "Nitrate N (mgN/L)",
+          "Total Hardness (mgCaCO3/L)",
+          "Total Alkalinity (mg/L as CaCO3)"
+        ]
+      }
+    }
+  ],
+  "total_raw_size_bytes": 228196999,
+  "total_raw_size_mb": 217.63,
+  "total_processed_size_bytes": 1858576,
+  "total_processed_size_mb": 1.77,
+  "budget_limit_bytes": 5368709120,
+  "preferred_budget_bytes": 1073741824,
+  "budget_status": "PASS_PREFERRED"
+}

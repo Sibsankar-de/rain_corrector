@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --surface: 248 250 252;        /* slate-50 */
+    --surface-raised: 255 255 255;  /* white */
+    --surface-sunken: 241 245 249;  /* slate-100 */
+    --ink: 15 23 42;               /* slate-900 */
+    --ink-muted: 71 85 105;        /* slate-600 */
+    --ink-faint: 148 163 184;      /* slate-400 */
+    --edge: 226 232 240;           /* slate-200 */
+  }
+
+  * {
+    @apply border-edge;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-ink antialiased selection:bg-brand-100 selection:text-brand-900;
+    font-feature-settings: "cv02", "cv03", "cv04", "tnum";
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-600 ring-offset-2 ring-offset-surface;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-edge bg-surface-raised shadow-sm transition-shadow duration-200;
+  }
+
+  .card-header {
+    @apply flex flex-wrap items-center justify-between gap-3 border-b border-edge px-4 py-3 sm:px-5;
+  }
+
+  .card-title {
+    @apply text-sm font-semibold tracking-tight text-ink;
+  }
+
+  .card-body {
+    @apply px-4 py-4 sm:px-5;
+  }
+
+  .data-label {
+    @apply text-2xs font-semibold uppercase tracking-wider text-ink-faint;
+  }
+
+  .data-value {
+    @apply font-mono text-sm tabular-nums text-ink;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-brand-700 text-white shadow-sm hover:bg-brand-800 active:bg-brand-900;
+  }
+
+  .btn-secondary {
+    @apply btn-base border border-edge bg-surface-raised text-ink shadow-sm hover:bg-surface-sunken active:bg-slate-200;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--edge)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* Leaflet Container & Popup styling for clean operational GIS UI */
+.leaflet-container {
+  @apply h-full w-full bg-slate-100 font-sans;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  @apply rounded-xl border border-edge bg-surface-raised shadow-md;
+}
+
+.leaflet-popup-content {
+  @apply m-0 min-w-0;
+}
+
+.leaflet-bar {
+  @apply overflow-hidden rounded-lg border border-edge bg-surface-raised shadow-sm;
+}
+
+.leaflet-bar a {
+  @apply text-ink hover:bg-surface-sunken transition border-b border-edge last:border-b-0;
+}

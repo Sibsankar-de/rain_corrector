@@ -1,0 +1,66 @@
+{
+  "download_timestamp": "2026-09-29T20:37:22.400151+00:00",
+  "study_region": {
+    "name": "Godavari Basin & Maharashtra",
+    "state": "Maharashtra",
+    "river_basin": "Godavari",
+    "description": "Godavari river basin and Maharashtra districts prone to severe monsoon precipitation and riverine flooding."
+  },
+  "files": {
+    "cwc_rainfall": {
+      "name": "CWC Telemetry Hourly Rainfall (Maharashtra)",
+      "publisher": "Central Water Commission, Ministry of Jal Shakti, Government of India",
+      "official_url": "https://nwdp.nwic.gov.in/dataset/rainfall-cwc-telemetry-hourly",
+      "download_url": "https://nwdp.nwic.gov.in/dataset/792f0818-bedf-42ab-a119-dc7002ceb312/resource/11909652-6802-4e82-8199-e323a922e64b/download/rainfall_tel_hr_cwc_mh_2021_2025.csv",
+      "local_path": "data/raw/rainfall_tel_hr_cwc_mh_2021_2025.csv",
+      "size_bytes": 36719484,
+      "sha256": "025e4a30421c57e670d238532592f821a49fba73c5785e1448f5c1dc4c766c3e",
+      "status": "downloaded",
+      "downloaded_at": "2026-09-29T20:37:52.315001+00:00"
+    },
+    "cwc_water_level": {
+      "name": "CWC Telemetry Hourly River Water Level (Godavari Basin)",
+      "publisher": "Central Water Commission, Ministry of Jal Shakti, Government of India",
+      "official_url": "https://nwdp.nwic.gov.in/dataset/river-water-level-telemetry-hourly-central-water-commission-cwc",
+      "download_url": "https://nwdp.nwic.gov.in/dataset/68600163-c5a0-4327-aa1a-fa7157b86cce/resource/4d139325-8371-422f-acef-d34ccec4300e/download/rwl_tel_hr_cwc_006_2021_2025.csv",
+      "local_path": "data/raw/rwl_tel_hr_cwc_006_2021_2025.csv",
+      "size_bytes": 185715692,
+      "sha256": "675a55fc63aab786486ec9faaa7ef8073805ce986815d61c319f545965a0313a",
+      "status": "downloaded",
+      "downloaded_at": "2026-09-29T20:39:15.958154+00:00"
+    },
+    "cwc_discharge": {
+      "name": "CWC Telemetry Hourly River Water Discharge (Odisha Basin Reference)",
+      "publisher": "Central Water Commission, Ministry of Jal Shakti, Government of India",
+      "official_url": "https://nwdp.nwic.gov.in/dataset/river-discharge-telemetry-hourly-central-water-commission-cwc",
+      "download_url": "https://nwdp.nwic.gov.in/dataset/aee818d7-2cb6-4790-aa3c-126a72621170/resource/b3dbc4d2-08c8-429d-920a-4171305e2426/download/river_discharge_tele_hr_cwc_od_1970_2025.csv",
+      "local_path": "data/raw/river_discharge_tele_hr_cwc_od_1970_2025.csv",
+      "size_bytes": 4628783,
+      "sha256": "7d0020405d103999780a7b8e031ed23b7385e905f6a9e7ddc8d9e42cbef78ef8",
+      "status": "downloaded",
+      "downloaded_at": "2026-09-29T20:39:18.135644+00:00"
+    },
+    "cwc_temperature": {
+      "name": "CWC Telemetry Hourly Temperature (Maharashtra)",
+      "publisher": "Central Water Commission, Ministry of Jal Shakti, Government of India",
+      "official_url": "https://nwdp.nwic.gov.in/dataset/temperature-telemetry-hourly-central-water-commission-cwc",
+      "download_url": "https://nwdp.nwic.gov.in/dataset/a0cc2de2-9f7b-478c-8d2d-d58af2ed8bf6/resource/c7ddda5c-7fb6-4bb7-8dd8-8b2757cebacc/download/temprature_tel_hr_cwc_mh_2021_2025.csv",
+      "local_path": "data/raw/temprature_tel_hr_cwc_mh_2021_2025.csv",
+      "size_bytes": 635029,
+      "sha256": "93b310ade1461fe952774d6df49659dc75eceb4a9b10c497c6200e90561e0633",
+      "status": "downloaded",
+      "downloaded_at": "2026-09-29T20:39:19.465013+00:00"
+    },
+    "cpcb_water_quality": {
+      "name": "CPCB Surface Water Quality Chemical Parameters (Maharashtra)",
+      "publisher": "Central Pollution Control Board, Ministry of Environment, Forest & Climate Change, Government of India",
+      "official_url": "https://nwdp.nwic.gov.in/dataset/surface-water-quality-manual-chemical-parameters-cpcb",
+      "download_url": "https://nwdp.nwic.gov.in/dataset/d54d7702-d21f-408f-8dc0-2665bde47201/resource/4593ba3e-3097-4f26-800c-b25c692adaef/download/swq_chemical_parameter_manual_cpcb_mh_2021_2025.csv",
+      "local_path": "data/raw/swq_chemical_parameter_manual_cpcb_mh_2021_2025.csv",
+      "size_bytes": 498011,
+      "sha256": "c852fa8464b00876ee3fe0760ad981a59498a565583c63eda9591b61a7d40829",
+      "status": "downloaded",
+      "downloaded_at": "2026-09-29T20:39:21.186321+00:00"
+    }
+  }
+}

@@ -1,0 +1,103 @@
+# Local development stack.
+#
+#   docker compose up -d db
+#   docker compose --profile app up -d backend frontend
+#   docker compose --profile ml run --rm ml python scripts/run_training.py
+#
+# Secrets are read from the root `.env`; copy `.env.example` first.
+
+name: rain-corrector
+
+x-backend-env: &backend-env
+  ENVIRONMENT: ${ENVIRONMENT:-development}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  LOG_FORMAT: ${LOG_FORMAT:-text}
+  ASYNC_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-rain}:${POSTGRES_PASSWORD:-rain_dev_password}@db:5432/${POSTGRES_DB:-rain_corrector}
+  DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-rain}:${POSTGRES_PASSWORD:-rain_dev_password}@db:5432/${POSTGRES_DB:-rain_corrector}
+  CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:3000}
+  SECRET_KEY: ${SECRET_KEY:-change-me-before-deploying}
+  ENABLE_API_KEY_AUTH: ${ENABLE_API_KEY_AUTH:-false}
+  MODEL_ARTIFACT_PATH: /app/ml/artifacts
+  MODEL_LOAD_ON_STARTUP: "true"
+  VERIFICATION_GRACE_PERIOD_HOURS: ${VERIFICATION_GRACE_PERIOD_HOURS:-6}
+  ENABLE_EXTERNAL_INGESTION: ${ENABLE_EXTERNAL_INGESTION:-false}
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: rain_corrector_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-rain}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rain_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-rain_corrector}
+    ports:
+      - "${POSTGRES_PORT:-55432}:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-rain} -d ${POSTGRES_DB:-rain_corrector}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build:
+      # The repository root, because the image installs `rainml` from ml/src.
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: rain_corrector_api
+    restart: unless-stopped
+    profiles: ["app"]
+    environment: *backend-env
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - ./ml/artifacts:/app/ml/artifacts:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: rain_corrector_web
+    restart: unless-stopped
+    profiles: ["app"]
+    environment:
+      # Baked into the bundle at build time, so it must be present for `build`.
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:8000/api/v1}
+      NEXT_PUBLIC_MAP_TILE_URL: ${NEXT_PUBLIC_MAP_TILE_URL:-https://tile.openstreetmap.org/{z}/{x}/{y}.png}
+      NEXT_PUBLIC_MAP_ATTRIBUTION: ${NEXT_PUBLIC_MAP_ATTRIBUTION:-&copy; OpenStreetMap contributors}
+      NEXT_PUBLIC_MAP_TILE_PROVIDER: ${NEXT_PUBLIC_MAP_TILE_PROVIDER:-OpenStreetMap Standard}
+      NEXT_PUBLIC_MAP_MAX_ZOOM: ${NEXT_PUBLIC_MAP_MAX_ZOOM:-19}
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    depends_on:
+      - backend
+
+  ml:
+    build:
+      context: .
+      dockerfile: ml/Dockerfile
+    container_name: rain_corrector_ml
+    profiles: ["ml"]
+    # The container writes artifacts and datasets into host-mounted volumes, so
+    # it runs as the invoking user. Set HOST_UID/HOST_GID in .env if your host
+    # user is not 1000:1000.
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    environment:
+      ASYNC_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-rain}:${POSTGRES_PASSWORD:-rain_dev_password}@db:5432/${POSTGRES_DB:-rain_corrector}
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-rain}:${POSTGRES_PASSWORD:-rain_dev_password}@db:5432/${POSTGRES_DB:-rain_corrector}
+      ML_RANDOM_SEED: ${ML_RANDOM_SEED:-42}
+    volumes:
+      - ./ml:/workspace/ml
+      - ./data:/workspace/data
+      - ./scripts:/workspace/scripts
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db_data:
